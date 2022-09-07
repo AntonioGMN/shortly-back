@@ -7,10 +7,16 @@ export async function createUrl(url: string, userId: number) {
   const creationData = dayjs().locale('pe-tb').format('DD/MM/YY HH:mm');
 
   await urlRepository.create(url, shortUrl, +userId, creationData);
+
   return;
 }
 
 export async function getOrinalUrl(shortUrl: string) {
   const response = await urlRepository.getByShortUrl(shortUrl);
   return response;
+}
+
+export async function getAll(userId: number) {
+  const urls = await urlRepository.getByUserId(userId);
+  return urls;
 }

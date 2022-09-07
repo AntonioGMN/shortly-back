@@ -14,12 +14,13 @@ export async function create(
   userId: number,
   created,
 ) {
-  await connection.query(
+  const response = await connection.query(
     'INSERT INTO urls (shortUrl, url, userId, created) VALUES ($1, $2, $3, $4)',
     [shortUrl, url, userId, created],
   );
 
-  return;
+  console.log(response);
+  return response.rows;
 }
 
 export async function getByShortUrl(shortUrl: string) {

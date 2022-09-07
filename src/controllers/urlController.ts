@@ -10,8 +10,13 @@ export async function create(req: Request, res: Response) {
 
 export async function redirect(req: Request, res: Response) {
   const shortUrl = req.params.url;
-  console.log(shortUrl);
   const { url } = await urlService.getOrinalUrl(shortUrl);
 
   res.redirect(url);
+}
+
+export async function getAll(req: Request, res: Response) {
+  const { userId } = res.locals;
+  const urls = await urlService.getAll(userId);
+  res.send(urls).status(200);
 }
