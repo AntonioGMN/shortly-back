@@ -5,7 +5,7 @@ import loginSchema from '../schemas/loginSchema.js';
 import userSchema from '../schemas/userSchema.js';
 
 const userRouter = Router();
-userRouter.post('/sign-up', validateSchema(userSchema), userController.sighUp);
+userRouter.post('/signUp', validateSchema(userSchema), userController.sighUp);
 userRouter.post('/login', validateSchema(loginSchema), userController.login);
 
 export default userRouter;

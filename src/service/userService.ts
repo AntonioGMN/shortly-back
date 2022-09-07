@@ -3,7 +3,6 @@ import user from '../repositories/userRepository.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { forbidden, notFound, unauthorized } from '../utils/errorUtils.js';
-import { serialize } from 'v8';
 
 interface loginDate {
   email: string;

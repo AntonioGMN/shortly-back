@@ -1,18 +1,18 @@
-CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
-	name TEXT NOT NULL,
-	email TEXT NOT NULL UNIQUE,
-	password TEXT NOT NULL
-);
+	CREATE TABLE users (
+		id SERIAL PRIMARY KEY,
+		name TEXT NOT NULL,
+		email TEXT NOT NULL UNIQUE,
+		password TEXT NOT NULL
+	);
 
-CREATE TABLE URLs (
-	id SERIAL PRIMARY KEY,
-	"shortUrl" TEXT NOT NULL,
-	url TEXT NOT NULL,
-  "userId" INT NOT NULL REFERENCES users(id) 
-)
+	CREATE TABLE urls (
+		id SERIAL PRIMARY KEY,
+		shortUrl TEXT NOT NULL UNIQUE,
+		url TEXT NOT NULL,
+		userId INTEGER NOT NULL REFERENCES users(id),
+		created date NOT NULL 
+	);
 
 
--- ALTER TABLE "URLs" ADD CONSTRAINT "URLs_fk0" FOREIGN KEY ("userId") REFERENCES "users"("id");
 
 
