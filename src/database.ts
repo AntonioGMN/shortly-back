@@ -12,7 +12,6 @@ let config = {
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
 };
-console.log(config);
 
 // if (process.env.NODE_ENV === 'prod') {
 //   config = {
