@@ -6,3 +6,12 @@ export async function sighUp(req: Request, res: Response) {
   await userService.signUp(user);
   res.sendStatus(201);
 }
+
+export async function login(req: Request, res: Response) {
+  const { email, password } = req.body;
+  const user = { email, password };
+
+  const token = await userService.login(user);
+  console.log(token);
+  res.send(token).status(200);
+}

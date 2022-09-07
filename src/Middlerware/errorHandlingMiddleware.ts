@@ -8,7 +8,6 @@ export default function errorHandlingMiddleware(
   next: NextFunction,
 ) {
   if ('type' in error) {
-    console.log('ads');
     if (error.type === 'forbidden') {
       return res.status(403).send(error.message);
     }

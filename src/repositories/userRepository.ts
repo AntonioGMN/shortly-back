@@ -20,5 +20,5 @@ export async function findByEmail(email: string) {
     'SELECT * FROM users WHERE email=$1',
     [email],
   );
-  return response.rows;
+  return response.rows[0];
 }
