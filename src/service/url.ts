@@ -1,12 +1,23 @@
 import * as urlRepository from '../repositories/url.js';
 import dayjs from 'dayjs';
+import {
+  forbidden,
+  notFound,
+  unauthorized,
+  bad_request,
+} from '../utils/errorUtils.js';
 
 export async function createUrl(url: string, userId: number) {
+  if (url === undefined || url === null || url === '')
+    bad_request('erro no body');
+
   const urls = await urlRepository.getByUserId(userId);
-  const shortUrl = `localhost:4000/${userId}${url.length}`;
+  const shortUrl = `http://localhost:4000/${userId}${
+    url.length
+  }${dayjs().millisecond()}`;
   const creationData = dayjs().locale('pe-tb').format('DD/MM/YY HH:mm');
 
-  await urlRepository.create(url, shortUrl, +userId, creationData);
+  await urlRepository.create(url, shortUrl, userId, creationData);
 
   return;
 }

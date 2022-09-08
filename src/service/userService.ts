@@ -15,7 +15,6 @@ export async function signUp(userDate: user) {
     forbidden('esse usuário já está cadastrado');
   }
 
-  console.log(userDate);
   const passwordHash = bcrypt.hashSync(userDate.password, 10);
 
   const hashUser = { ...userDate, password: passwordHash };
@@ -34,7 +33,6 @@ export async function login(loginDate: loginDate) {
   if (!validatePassword) unauthorized('Password invalid');
 
   const secretKey = process.env.JWT_SECRET;
-  console.log(secretKey);
   const token = jwt.sign({ userId: findedUser.id }, secretKey);
 
   return token;

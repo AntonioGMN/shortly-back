@@ -14,3 +14,7 @@ export function unauthorized(message): AppError {
 export function forbidden(message): AppError {
   throw { type: 'forbidden', message };
 }
+
+export function bad_request(message): AppError {
+  throw { type: 'bad_request', message };
+}

@@ -12,6 +12,5 @@ export async function login(req: Request, res: Response) {
   const user = { email, password };
 
   const token = await userService.login(user);
-  console.log(token);
   res.send(token).status(200);
 }
