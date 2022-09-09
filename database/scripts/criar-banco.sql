@@ -10,7 +10,7 @@
 		shortUrl TEXT NOT NULL UNIQUE,
 		url TEXT NOT NULL,
 		userId INTEGER NOT NULL REFERENCES users(id),
-		created date NOT NULL 
+		created  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	);
 
 

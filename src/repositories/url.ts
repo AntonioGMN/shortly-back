@@ -8,15 +8,10 @@ export async function getByUserId(userId: number) {
   return response.rows;
 }
 
-export async function create(
-  url: string,
-  shortUrl: string,
-  userId: number,
-  created,
-) {
+export async function create(url: string, shortUrl: string, userId: number) {
   const response = await connection.query(
-    'INSERT INTO urls (shortUrl, url, userId, created) VALUES ($1, $2, $3, $4)',
-    [shortUrl, url, userId, created],
+    'INSERT INTO urls (shortUrl, url, userId) VALUES ($1, $2, $3)',
+    [shortUrl, url, userId],
   );
 
   return response.rows;

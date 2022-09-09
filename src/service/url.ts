@@ -13,11 +13,10 @@ export async function createUrl(url: string, userId: number) {
 
   const urls = await urlRepository.getByUserId(userId);
   const shortUrl = `http://localhost:4000/${userId}${
-    url.length
+    urls.length
   }${dayjs().millisecond()}`;
-  const creationData = dayjs().locale('pe-tb').format('DD/MM/YY HH:mm');
 
-  await urlRepository.create(url, shortUrl, userId, creationData);
+  await urlRepository.create(url, shortUrl, userId);
 
   return;
 }
